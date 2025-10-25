@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
 import { Code2, Database, Globe, Sparkles, ArrowRight, Star, ChevronLeft, ChevronRight, Trophy, Users, Coffee, Zap } from 'lucide-react';
 
 export default function EnhancedHomepage() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [hoveredProject, setHoveredProject] = useState(null);
   const [scrollY, setScrollY] = useState(0);
-
+  const navigate=useNavigate()
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
@@ -254,7 +255,7 @@ export default function EnhancedHomepage() {
             flexWrap: 'wrap',
             animation: 'fadeInUp 1.4s ease-out'
           }}>
-            <a href="/projects" style={{textDecoration:"none"}}>
+           
               <button style={{
               padding: '1rem 2.5rem',
               background: '#43D9AD',
@@ -277,12 +278,11 @@ export default function EnhancedHomepage() {
             onMouseLeave={(e) => {
               e.target.style.transform = 'translateY(0)';
               e.target.style.boxShadow = 'none';
-            }}>
+            }} onClick={()=>navigate("/projects")}>
               View Projects <ArrowRight size={20} />
             </button>
-            </a>
             
-            <a href="/contacts" style={{textDecoration:"none"}}>
+           
               <button style={{
               padding: '1rem 2.5rem',
               background: 'transparent',
@@ -302,10 +302,11 @@ export default function EnhancedHomepage() {
             onMouseLeave={(e) => {
               e.target.style.borderColor = '#314158';
               e.target.style.color = '#90A1B9';
-            }}>
+            }} 
+            onClick={()=>navigate("/contacts")}
+            >
               Get In Touch
             </button>
-            </a>
             
           </div>
         </div>

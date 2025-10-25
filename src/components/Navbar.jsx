@@ -18,7 +18,7 @@ const Navbar = () => {
         />
       <div className='menu-container'>
         
-        <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
+        <ul className={`nav-links ${menuOpen ? 'open' : ''}`} onClick={()=>setMenuOpen(!menuOpen)}>
           <Link to="/"><li className='list-items'>yash-rai</li></Link>
           <Link to="/hello"><li className='list-items'>_hello</li></Link>
           <Link to="/about"><li className='list-items'>_about-me</li></Link>
