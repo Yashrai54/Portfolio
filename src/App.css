@@ -199,21 +199,35 @@ span {
   transition: all 0.5s ease;
 }
 
-.menu {
-  display: none;
-  font-size: 2rem;
-  cursor: pointer;
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  z-index: 1000;
-  height: 20px;
-  color: #90A1B9;
-  transition: color 0.3s ease;
+.menu-container {
+  position: relative; /* for dropdown positioning */
+  z-index: 1001; /* above other content */
+  left:-1.5rem;
 }
 
+/* Menu icon */
+.menu {
+  font-size: 2rem;
+  cursor: pointer;
+  color: #90A1B9;
+  background: rgba(15, 23, 43, 0.8);
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease; /* smooth for color, background, transform, etc. */
+}
+
+/* Hover / active transition */
 .menu:hover {
   color: #43D9AD;
+  background: rgba(15, 23, 43, 1);
+  
+}
+
+/* Optional click effect */
+.menu:active {
+  transform: scale(0.95); /* quick press animation */
+  transition: transform 0.1s ease;
+  transform: scale(1.1) rotate(90deg); /* combine scale + rotation */
 }
 
 .startgame {

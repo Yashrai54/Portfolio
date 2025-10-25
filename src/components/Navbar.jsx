@@ -11,12 +11,13 @@ const Navbar = () => {
 
   return (
     <div className='navbar'>
-      <div className='menu-container'>
-        <CiMenuBurger 
+      <CiMenuBurger 
           className='menu' 
           color='white' 
           onClick={toggleMenu} 
         />
+      <div className='menu-container'>
+        
         <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
           <Link to="/"><li className='list-items'>yash-rai</li></Link>
           <Link to="/hello"><li className='list-items'>_hello</li></Link>
