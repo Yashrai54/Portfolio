@@ -7,10 +7,13 @@ body {
   display: flex;
   overflow: hidden;
 }
-main{
+
+main {
   height: 85vh;
-  width: 100vw; /* allows main to grow and fill available space */
+  width: 100vw;
+  transition: all 0.3s ease;
 }
+
 .app {
   min-height: 100vh;
   min-width: 100vw;
@@ -19,21 +22,24 @@ main{
 /* Navbar */
 .navbar {
   display: flex;
-  justify-content: space-between; /* separate left & right divs */
-  align-items: center;            /* vertically center content */
+  justify-content: space-between;
+  align-items: center;
   border: 2px solid #314158;
-  padding: 0 1rem;                /* spacing from edges */
+  padding: 0 1rem;
   box-sizing: border-box;
-  width: 100%;                /* allow it to grow with content */
+  width: 100%;
+  transition: padding 0.3s ease;
+  position: relative;
 }
 
 /* Nav links container */
 .nav-links {
   display: flex;
-  gap: 0;                          /* we'll handle spacing with borders */
+  gap: 0;
   margin: 0;
   padding: 0;
   list-style: none;
+  transition: all 0.3s ease;
 }
 
 /* Individual links */
@@ -46,6 +52,7 @@ main{
   display: flex;
   align-items: center;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 /* Borders */
@@ -56,48 +63,68 @@ main{
 .contact-link {
   border-left: 2px solid #314158;
 }
+
 .list-items:hover,
 .contact-link:hover {
-   border-bottom:1px solid #FFB86A;
+  border-bottom: 1px solid #FFB86A;
+  color: #FFB86A;
 }
-.footer{
+
+.footer {
   height: 3rem;
   position: fixed;
   bottom: 0;
+  transition: all 0.3s ease;
 }
-.paragraph{
-   padding: 5px;
-   margin: 0;
-   color: #90A1B9;
+
+.paragraph {
+  color: var(--color-text-primary, #90A1B9);
+  padding: var(--spacing-sm, 1rem);
+  margin: 0;
+  line-height: 1.6;
+  max-width: 75ch;
+  transition: all 0.3s ease;
 }
+
 h1 {
   color: white;
   margin: 0;
   padding: 5px;
+  transition: all 0.3s ease;
 }
-h2{
+
+h2 {
   color: purple;
   margin: 0;
   padding: 5px;
+  transition: all 0.3s ease;
 }
-.home{
+
+.home {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin: 10px;
-  padding: 10px;
+  margin: var(--spacing-md, 1rem);
+  padding: var(--spacing-md, 1rem);
+  height: 100%;
   overflow: hidden;
+  transition: all 0.3s ease;
 }
-b{
+
+b {
   color: brown;
 }
-a{
+
+a {
   color: red;
+  transition: color 0.3s ease;
 }
-span{
+
+span {
   color: green;
 }
-.game{
+
+.game {
   margin: 5px;
   padding: 10px;
   overflow: hidden;
@@ -105,23 +132,27 @@ span{
   height: 400px;
   width: 400px;
   border-radius: 8px;
-  background:linear-gradient(to bottom,#175553 70%,#43D9AD 30%);
+  background: linear-gradient(to bottom, #175553 70%, #43D9AD 30%);
   box-shadow: #175553 0px 0px 10px, #43D9AD 0px 0px 20px, #43D9AD 0px 0px 30px, #43D9AD 0px 0px 40px;
+  transition: all 0.3s ease;
 }
-.snake{
+
+.snake {
   height: 70%;
   background-color: #FFB86A;
   display: flex;
-  gap:5px;
-  justify-content: center; 
+  gap: 5px;
+  justify-content: center;
   align-items: center;
 }
-.skip{
+
+.skip {
   height: 20%;
   margin: 10px;
   padding: 10px;
 }
-.cell{
+
+.cell {
   background-color: #0F172B;
   border: 2px solid #314158;
   display: flex;
@@ -130,11 +161,15 @@ span{
   font-size: 1.5rem;
   color: white;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
+
 .cell:hover {
   background-color: #475569;
+  transform: scale(1.05);
 }
-.box{
+
+.box {
   background-color: #0F172B;
   border: 2px solid #314158;
   display: flex;
@@ -147,42 +182,91 @@ span{
   width: 80px;
   margin: 5px;
   padding: 15px;
+  transition: all 0.3s ease;
 }
-.label{
+
+.box:hover {
+  transform: scale(1.05);
+  border-color: #43D9AD;
+}
+
+.label {
   color: white;
   margin-bottom: 10px;
   font-size: 1.2rem;
   text-align: center;
   display: none;
-  transition: display 0.5s ease-in-out;
+  transition: all 0.5s ease;
 }
-.startgame{
+
+.menu {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1000;
+  height: 20px;
+  color: #90A1B9;
+  transition: color 0.3s ease;
+}
+
+.menu:hover {
+  color: #43D9AD;
+}
+
+.startgame {
   height: 20%;
   margin: 10px;
   padding: 10px;
-  transition: display 0.5s ease-in-out;
+  transition: all 0.5s ease;
 }
-.image-container{
+
+.image-container {
   display: flex;
   flex-direction: column;
+  gap: var(--spacing-md, 1rem);
 }
-.image-container img{
+
+.image-container img {
   margin: 0;
   padding: 0;
-  border: 2px solid #314158;
-  border-radius: 8px;
-  box-shadow: #175553 0px 0px 10px, #43D9AD 0px 0px 20px, #43D9AD 0px 0px 30px, purple 0px 0px 40px;
+  border: 2px solid var(--color-border, #314158);
+  border-radius: var(--border-radius, 8px);
+  box-shadow: 
+    var(--color-bg-dark, #0F172B) 0 0 10px, 
+    var(--color-accent-teal, #43D9AD) 0 0 30px, 
+    var(--color-special-purple, purple) 0 0 40px;
+  transition: all 0.3s ease;
 }
-.img1{
+
+.image-container img:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    var(--color-bg-dark, #0F172B) 0 0 15px, 
+    var(--color-accent-teal, #43D9AD) 0 0 40px, 
+    var(--color-special-purple, purple) 0 0 50px;
+}
+
+.img1 {
   opacity: 0.5;
   filter: blur(2px);
+  transition: opacity 0.3s ease, filter 0.3s ease;
 }
-.container{
+
+.img1:hover {
+  opacity: 0.7;
+  filter: blur(1px);
+}
+
+.container {
   text-align: center;
   margin: 5px;
   padding: 5px;
 }
-.reset{
+
+.reset {
   background-color: #FF5555;
   border: none;
   color: white;
@@ -194,8 +278,15 @@ span{
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 8px;
+  transition: all 0.3s ease;
 }
-.boxes{
+
+.reset:hover {
+  background-color: #ff6b6b;
+  transform: scale(1.05);
+}
+
+.boxes {
   display: flex;
   height: 100px;
   width: 100px;
@@ -204,8 +295,14 @@ span{
   border-radius: 12px;
   cursor: pointer;
   gap: 10px;
+  transition: all 0.3s ease;
 }
-.board{
+
+.boxes:hover {
+  border-color: #43D9AD;
+}
+
+.board {
   display: flex;
   margin: auto;
   height: 400px;
@@ -213,50 +310,64 @@ span{
   padding: 10px;
   gap: 10px;
 }
-.row1,.row2,.row3{
+
+.row1, .row2, .row3 {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-@media screen and (max-width: 768px) {
-  .home {
-    flex-direction: column;
-  }
-
-}
 .error-heading {
   font-size: 10rem;
   color: #90A1B9;
   text-shadow: 2px 2px 0 #314158, 4px 4px 0 #43D9AD;
+  transition: all 0.3s ease;
 }
-.hello{
+
+.hello {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
+  height: 100%;
+  padding: 20px;
+  transition: all 0.3s ease;
 }
-.error-text{
-  margin-right: 20px;
+
+.error-text {
+  color: var(--color-text-primary, #90A1B9);
   font-size: 2rem;
-  color: #90A1B9;
+  max-width: 40%;
+  transition: all 0.3s ease;
 }
-.about-list{
+
+.about-list {
   list-style-type: none;
   padding: 10px;
   margin: 10px;
   color: white;
   cursor: pointer;
-  transition: display ease-in-out;
+  transition: all 0.3s ease;
 }
-.about-heading{
+
+.about-list:hover {
+  color: #43D9AD;
+  transform: translateX(5px);
+}
+
+.about-heading {
   color: #90A1B9;
-  text-shadow: 1px 1px 0 #314158, 2px;
+  text-shadow: 1px 1px 0 #314158;
   padding: 5px;
   margin: 5px;
   cursor: pointer;
-
+  transition: all 0.3s ease;
 }
-.about{
+
+.about-heading:hover {
+  color: #43D9AD;
+}
+
+.about {
   border: 2px solid #314158;
   margin: 10px;
   padding: 10px;
@@ -264,32 +375,42 @@ span{
   background: linear-gradient(to right, #0F172B, #1E293B, #0F172B);
   height: 80vh;
   width: 200px;
+  transition: all 0.3s ease;
 }
-.img-dropdown{
+
+.img-dropdown {
   margin-right: 8px;
   filter: invert(1);
   position: relative;
   top: 4px;
+  transition: transform 0.3s ease;
 }
-.img-list-dropdown{
+
+.img-list-dropdown {
   margin-right: 8px;
   position: relative;
   top: 4px;
+  transition: transform 0.3s ease;
 }
-.about-container{
+
+.about-container {
   display: flex;
+  transition: all 0.3s ease;
 }
-.about-description{
+
+.about-description {
   display: flex;
-  flex:wrap;
+  flex-wrap: wrap;
   width: 50%;
   height: screen;
   margin: 5px;
   padding: 10px;
   word-wrap: break-word;
   border-right: 4px solid #475569;
+  transition: all 0.3s ease;
 }
-.code-snippets{
+
+.code-snippets {
   display: flex;
   flex-direction: column;
   margin: 10px;
@@ -298,26 +419,42 @@ span{
   justify-content: center;
   align-items: center;
   width: 40%;
+  transition: all 0.3s ease;
 }
-.logos{
+
+.logos {
   margin: 5px;
   padding: 10px;
+  transition: transform 0.3s ease;
 }
-.snippet{
+
+.logos:hover {
+  transform: scale(1.1);
+}
+
+.snippet {
   margin: 2px;
 }
-.project-list-dropdown{
+
+.project-list-dropdown {
   margin: 8px;
   text-align: center;
 }
-.checkbox{
+
+.checkbox {
   margin: 5px;
- accent-color: black;
- width: 40px;
- height: 20px;
- cursor: pointer;
+  accent-color: black;
+  width: 40px;
+  height: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
-.project-list{
+
+.checkbox:hover {
+  transform: scale(1.1);
+}
+
+.project-list {
   list-style: none;
   color: white;
   display: grid;
@@ -325,55 +462,92 @@ span{
   grid-template-rows: 200px 200px 200px 200px;
   grid-template-columns: 200px 200px 200px 200px;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
-.project{
+
+.project-list li {
+  transition: all 0.3s ease;
+}
+
+.project-list li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(67, 217, 173, 0.3);
+}
+
+.project {
   width: 60%;
   margin: 5px;
   border-right: 4px solid #314158;
+  transition: all 0.3s ease;
 }
-.project-details{
+
+.project-details {
   width: 10%;
   margin: 5px;
 }
-.project-list-items{
+
+.project-list-items {
   margin: 5px;
-  list-style:armenian;
+  list-style: armenian;
   white-space: 2px;
 }
-.features{
-  font-display:swap;
+
+.features {
+  font-display: swap;
 }
-.a-list{
+
+.a-list {
   list-style: none;
   display: flex;
 }
-.form-input{
+
+.form-input {
   background-color: #0F172B;
   margin: 10px;
   padding: 20px;
   border-radius: 4px;
   width: 200px;
   color: #90A1B9;
+  border: 2px solid #314158;
+  transition: all 0.3s ease;
 }
-.form{
+
+.form-input:focus {
+  outline: none;
+  border-color: #43D9AD;
+  box-shadow: 0 0 10px rgba(67, 217, 173, 0.3);
+}
+
+.form {
   margin: auto;
 }
-.button{
-   position: relative;
-   left: 20px;
-   background-color: #314158;
-   color: #90A1B9;
+
+.button {
+  position: relative;
+  left: 20px;
+  background-color: #314158;
+  color: #90A1B9;
+  transition: all 0.3s ease;
 }
-.h1{
+
+.button:hover {
+  background-color: #43D9AD;
+  color: #0F172B;
+  transform: scale(1.05);
+}
+
+.h1 {
   text-align: center;
 }
-.code{
+
+.code {
   background-color: #314158;
-  color:#43D9AD;
+  color: #43D9AD;
   padding: 4px;
   border-radius: 4px;
   overflow-x: auto;
 }
+
 .code-box {
   background: #1e1e1e;
   color: #d4d4d4;
@@ -396,4 +570,521 @@ span{
 
 .indent {
   margin-left: 20px;
+}
+
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+  main {
+    height: auto;
+    min-height: 85vh;
+  }
+  body{
+    overflow: scroll;
+  }
+
+  .navbar {
+    padding: 0.5rem;
+  }
+
+  .home {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-y: auto;
+    height: auto;
+    padding: 20px 10px;
+  }
+
+  .hello {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px 10px;
+    overflow-y: auto;
+  }
+
+  .error-text {
+    max-width: 90%;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+  }
+
+  .error-heading {
+    font-size: 5rem;
+  }
+
+  .image-container {
+    width: 100%;
+    align-items: center;
+  }
+
+  .image-container img {
+    width: 90vw;
+    max-width: 350px;
+    height: auto;
+  }
+
+  .paragraph {
+    font-size: 0.9rem;
+    padding: var(--spacing-sm, 0.5rem);
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background: #0f172a;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 2px solid #314158;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .list-items {
+    border-right: none;
+    border-bottom: 2px solid #314158;
+  }
+
+  .contact-link {
+    border-left: none;
+  }
+
+  .menu {
+    display: block;
+  }
+
+  .about-container {
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+  }
+
+  .about {
+    height: auto;
+    min-height: 300px;
+    width: 90%;
+    overflow: auto;
+  }
+
+  .about-description {
+    width: 95%;
+    border-right: none;
+    border-bottom: 4px solid #475569;
+  }
+
+  .code-snippets {
+    display: none;
+  }
+
+  .project {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    border-right: none;
+  }
+
+  .project-list {
+    grid-template-rows: repeat(auto-fit, 150px);
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .project-list li {
+    height: 150px;
+    width: 100%;
+  }
+
+  .project-details {
+    display: none;
+  }
+
+  .game {
+    width: 90vw;
+    max-width: 350px;
+    height: auto;
+    aspect-ratio: 1;
+  }
+
+  .board {
+    width: 90vw;
+    max-width: 320px;
+    height: auto;
+  }
+
+  .box {
+    height: 60px;
+    width: 60px;
+    font-size: 1.2rem;
+  }
+
+  .form-input {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .menu {
+    display: block;
+  }
+  body{
+    overflow: sc;
+  }
+
+  .error-text {
+    font-size: 1.2rem;
+  }
+
+  .error-heading {
+    font-size: 3rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  .project-list {
+    grid-template-columns: 1fr;
+  }
+
+  .box {
+    height: 50px;
+    width: 50px;
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .cell {
+    font-size: 1.2rem;
+  }
+}
+
+/* Smooth scrolling for all devices */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Better touch targets for mobile */
+@media (hover: none) and (pointer: coarse) {
+  .list-items,
+  .contact-link,
+  .button,
+  .reset,
+  .box,
+  .cell {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+/* =========================================================================
+   1. GLOBAL STYLES & LAYOUT
+   ========================================================================= */
+
+:root {
+    --color-primary: #43D9AD; /* Blue for highlights/buttons */
+    --color-secondary: #6c757d; /* Gray for subtle text */
+    --color-background: white; /* Light background */
+    --color-panel: #0f172a; /* White for main panels */
+    --color-border: #e9ecef; /* Light gray border */
+    --color-text: white; /* Dark text */
+    --color-shadow: rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    --color-selected: #314158; /* Light blue for selected items */
+    --font-stack: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-stack);
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
+
+.projects-main-container {
+    display: grid;
+    /* Defines a 3-column layout: Filter (1fr) | Projects (2fr) | Details (3fr) */
+    grid-template-columns: 1fr 2fr 3fr; 
+    gap: 15px;
+    padding: 20px;
+    height: calc(90vh - 40px); /* Full viewport height minus padding */
+    box-sizing: border-box;
+}
+
+h2 {
+    color: var(--color-primary);
+    font-size: 1.25rem;
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--color-border);
+}
+
+/* Base style for the three main panels */
+.language-filter-panel, 
+.project-list-panel, 
+.project-details-panel {
+    background-color: var(--color-panel);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 12px var(--color-shadow);
+    overflow-y: auto; /* Enable scrolling for panels if content is long */
+    color: white;
+}
+
+/* =========================================================================
+   2. FILTER PANEL STYLES
+   ========================================================================= */
+
+
+
+.filter-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.filter-list-item {
+    margin-bottom: 8px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    font-size: 0.95rem;
+}
+
+.checkbox-label:hover {
+    background-color: var(--color-panel);
+}
+
+.custom-checkbox {
+    /* Basic styling for the checkbox itself */
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
+}
+
+/* =========================================================================
+   3. PROJECT LIST STYLES
+   ========================================================================= */
+
+.project-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    /* 2 columns for the project list within its panel */
+    grid-template-columns: 1fr 1fr; 
+    gap: 15px;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 15px;
+    transition: all 0.2s ease-in-out;
+    background-color: var(--color-panel);
+}
+
+.project-card:hover {
+    box-shadow: 0 4px 10px var(--color-shadow);
+    transform: translateY(-2px);
+}
+
+.project-card-selected {
+    border-color: var(--color-primary);
+    background-color: var(--color-selected);
+    box-shadow: 0 0 0 3px var(--color-primary); /* Blue ring effect */
+
+}
+
+.project-image-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.project-thumbnail {
+    /* Adjust these values to match your actual image size or use a placeholder icon */
+    max-width: 100%; 
+    height: auto;
+    border-radius: 4px;
+}
+
+.project-card-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: var(--color-text);
+}
+
+.project-card-langs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.lang-tag {
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background-color: #e9f0f6; /* Light background for tags */
+    color: var(--color-secondary);
+    font-weight: 500;
+}
+
+.no-projects {
+    grid-column: 1 / -1; /* Center message across all columns */
+    text-align: center;
+    color: var(--color-secondary);
+    padding: 20px;
+}
+
+/* =========================================================================
+   4. PROJECT DETAILS STYLES
+   ========================================================================= */
+
+.details-content {
+    line-height: 1.6;
+}
+
+.details-title {
+    font-size: 1.6rem;
+    color: var(--color-text);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed var(--color-border);
+}
+
+.details-section {
+    margin-bottom: 20px;
+}
+
+.details-label {
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
+
+.details-description {
+    font-size: 0.95rem;
+    margin-top: 0;
+    padding-left: 5px;
+}
+
+.details-lang-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-left: 5px;
+}
+
+.details-tag {
+    /* Style for the language tags in the details section */
+    background-color: var(--color-primary);
+    color: var(--color-panel);
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+.details-feature-list {
+    list-style: none;
+    padding: 0 0 0 5px;
+    margin: 0;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.feature-icon {
+    margin-right: 10px;
+    color: var(--color-primary);
+    font-weight: bold;
+    line-height: 1.5; /* Align icon vertically */
+}
+
+.details-placeholder {
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--color-secondary);
+    font-size: 1.1rem;
+}
+
+/* =========================================================================
+   5. MEDIA QUERIES (Responsiveness)
+   ========================================================================= */
+
+/* Tablet/Medium Screens */
+@media (max-width: 992px) {
+    .projects-main-container {
+        /* Stack filter and details, keep projects list for scrolling */
+        grid-template-columns: 1fr 2fr; 
+        grid-template-rows: auto 1fr;
+        height: auto;
+    }
+
+    .language-filter-panel {
+        /* Filter takes the full width on top */
+        grid-column: 1 / -1; 
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+    
+    .filter-list {
+        /* Make filter list horizontal for smaller screens */
+        display: flex;
+        gap: 10px;
+        width: max-content;
+    }
+
+    .project-list-panel {
+        grid-column: 1 / 2; /* Projects take the left column */
+    }
+
+    .project-details-panel {
+        grid-column: 2 / 3; /* Details take the right column */
+    }
+}
+
+/* Mobile/Small Screens */
+@media (max-width: 768px) {
+    .projects-main-container {
+        /* Stack all panels vertically */
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        padding: 10px;
+    }
+
+    .project-grid {
+        /* One column grid for projects on mobile */
+        grid-template-columns: 1fr; 
+    }
+    
+    .project-list-panel, 
+    .project-details-panel {
+        grid-column: 1 / -1;
+    }
 }

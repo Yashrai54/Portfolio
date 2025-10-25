@@ -1,109 +1,275 @@
-import React, { act, use } from 'react'
-import Dropdown from '../assets/dropdown.png'
-import { useState } from 'react'
-import  Folder from '../assets/folder.png'
-import SpringBoot from '../assets/SpringBoot.png'
-import bot from '../assets/bot.png'
-import php from '../assets/php.png'
+import React, { useState } from 'react';
+import { ChevronDown, ChevronRight, User, Heart, GraduationCap, Mail, Phone } from 'lucide-react';
+import atlas from '../assets/atlas.png'
+import bot from '../assets/gachabot.png'
+import eduera from '../assets/eduera.png'
 
-const About = () => {
-  const [open, setOpen] = useState(false)
-  const [openContact, setOpenContact] = useState(false)
-  const [active,setActive]=useState('')
+// Import your images
+// import Dropdown from '../assets/dropdown.png'
+// import Folder from '../assets/folder.png'
+// import SpringBoot from '../assets/SpringBoot.png'
+// import bot from '../assets/bot.png'
+// import php from '../assets/php.png'
 
-  function handleDropdown(){
-    setOpen(!open)
-    console.log(open)
-  }
-  function handleContactDropdown(){
-    setOpenContact(!openContact)
-    console.log(openContact)
-  }
-  function handleClick(input){
-     setActive(input)
-  }
+export default function EnhancedAbout() {
+  const [open, setOpen] = useState(false);
+  const [openContact, setOpenContact] = useState(false);
+  const [active, setActive] = useState('');
+
   return (
-    <div className='about-container'>
-    <div className='about'>
-      <div className='personal-info'>
-          <p className='about-heading' onClick={()=>handleDropdown()}><img src={Dropdown} alt="" height={20} width={20} className='img-dropdown'/>personal-info</p>
-         {open &&(
-         <ul className='about-list'>
-           <li onClick={()=>handleClick('bio')}><img src={Folder} alt="" height={20} width={20} className='img-list-dropdown' />bio</li>
-           <li onClick={()=>handleClick('interests')}><img src={Folder} alt="" height={20} width={20} className='img-list-dropdown' />interests</li>
-           <li onClick={()=>handleClick('education')}><img src={Folder} alt="" height={20} width={20} className='img-list-dropdown' />education</li>
-         </ul>)}
-      </div>
-      <div className='contact-info'>
-          <p className='about-heading' onClick={()=>handleContactDropdown()}> <img src={Dropdown} alt="" className='img-dropdown' height={20} width={20}/>contact-info</p>
-         {openContact &&(
-         <ul className='about-list'>
-           <li>raiyash582@gmail.com</li>
-            <li>+917015032481</li>
-          </ul>)}
-      </div>
-    </div>
-     <div className='about-description'>
-       {active =='bio' &&
-         <div>
-            <p className='paragraph'>/** I am Yash Rai </p>
-              <p className='paragraph'>*a Full-Stack Developer</p>
-              <p className='paragraph'>*who loves building smooth user experiences</p>
-              <p className='paragraph'>*and solving tough problems with clean code.</p>
-              <p className='paragraph'>*Skilled in React, Node.js, and modern web tech.</p> 
-              <p className='paragraph'>*Always learning, always shipping.</p>
-              <p className='paragraph'>*I am currently an Intern at HighRadius Technologies where i debug implementation issues to deal with real world clients</p>
-              <p className='paragraph'>*HighRadius helps the client to automate the O2C cycle by using their software</p>  
-              <p className='paragraph'>*My job there involves providing hypercare to the clients after implementation by using technical skills like SQL and problem solving*/</p>
-          </div>
-       }
-       {
-        active=='interests' &&
-        <div className='paragraph'>
-           <p className='paragraph'>/**Outside of coding,</p><p className='paragraph'>*I got a few things that keep me going.</p><p>*I’m big into anime and manga</p><p> *— stories that hit hard and twist your brain,</p><p>*stuff like Attack on Titan or Baccano! really stick with me.</p> <p>*Football is another passion, keeps me sharp and disciplined.</p><p>*I love solving tough problems in DSA, kinda like puzzles but with real impact.</p><p> *When I need to chill, you’ll catch me gaming or diving into novels that make me think twice about everything.*/</p>
-          </div>
-       }
-       {
-        active=='education' && 
-        <div className='paragraph'>
-          <p>/**I’m currently pursuing my Bachelor of Engineering in Computer Science and Engineering at Chandigarh University.</p><p>* Being in my 3rd year, I’ve focused on building a strong foundation in Data Structures & Algorithms while also working on full-stack web development projects.</p><p>*Beyond coursework, I’ve been sharpening my skills through personal projects, internships, and problem-solving challenges to stay industry-ready.</p>
-          <p className='paragraph'>*During my coursework, i have also done a training for Blockchain and JavaScript through Metacrafters and have recieved certificates for both which showcases my skills in this modern tech*/</p>
-          </div>
-       }
+    <div className='about-container' style={{
+      display: 'flex',
+      minHeight: '85vh'
+    }}>
+      <style>{`
+        .sidebar-item {
+          transition: all 0.3s ease;
+        }
+        .sidebar-item:hover {
+          background: rgba(67, 217, 173, 0.05);
+          color: #43D9AD !important;
+        }
+        .dropdown-list {
+          animation: slideDown 0.3s ease-out;
+        }
+        @keyframes slideDown {
+          from {
+            opacity: 0;
+            max-height: 0;
+          }
+          to {
+            opacity: 1;
+            max-height: 300px;
+          }
+        }
+      `}</style>
 
-     </div>
-     <div className='code-snippets'>
-        <p className='paragraph'>//Code snippet showcase:</p>
-        {active=='bio' &&
-        <div>
-           <img src={SpringBoot} alt="" height={200} width={300} className='snippet' />
-        </div>}
-        {active=='bio' && 
-        <p className='paragraph'>
-          <p>This code snippet is from the project which i was making during my college for spring boot .</p><p>I initially used to make my backend projects in node</p> <p>but when i first used spring boot for my project i realised how 
-          immensely better it was compared to other libraries .</p> <p> Spring boot gave that edge by using annotations</p> <p>for removing repetitive work like connecting the DB</p><p> ,configuring the same things for the 100th time</p>
-        </p>}
-        {active=='interests' &&
-        <div>
-           <img src={bot} alt="" height={200} width={500} className='snippet' />
-        </div>}
-        {active=='interests' && 
-        <p className='paragraph'>
-          <p>This code snippet is from the project which i was made for fun.</p><p>It was basically a gamebot for pulling cards Just like pokemons but not on that grand level 
-          i made it in Node js </p> <p>The project was even used by a group having around 300 members </p> <p>I even stored the data of users in DB and had them get points and better cards through those points </p><p>The json was not available anywhere to pull the data from so i learned bit of web scraping to pull the data from sites</p>
-        </p>}
-          {active=='education' &&
-        <div>
-           <img src={php} alt="" height={200} width={400} className='snippet' />
-        </div>}
-        {active=='education' && 
-        <p className='paragraph'>
-          <p>This code snippet is from the project i made for college project </p><p>It was a full stack project which is basically used as a bridge between college placement cell and companies
-          </p> <p>The project was given a solid A+ by the evaluators</p> <p>It had functionalities of multiple user view for admins,companies and students</p><p></p>
-        </p>}
-     </div>
+      {/* Sidebar - Keep your original structure */}
+      <div className='about'>
+        <div className='personal-info'>
+          <p className='about-heading sidebar-item' onClick={() => setOpen(!open)}>
+            {open ? <ChevronDown size={20} style={{ marginRight: '8px', position: 'relative', top: '4px' }} /> : <ChevronRight size={20} style={{ marginRight: '8px', position: 'relative', top: '4px' }} />}
+            personal-info
+          </p>
+          {open && (
+            <ul className='about-list dropdown-list'>
+              <li onClick={() => setActive('bio')} style={{
+                background: active === 'bio' ? 'rgba(67, 217, 173, 0.1)' : 'transparent',
+                color: active === 'bio' ? '#43D9AD' : 'white',
+                borderLeft: active === 'bio' ? '3px solid #43D9AD' : 'none',
+                paddingLeft: active === 'bio' ? '17px' : '20px'
+              }}>
+                <User size={16} style={{ marginRight: '8px', position: 'relative', top: '3px' }} />
+                bio
+              </li>
+              <li onClick={() => setActive('interests')} style={{
+                background: active === 'interests' ? 'rgba(67, 217, 173, 0.1)' : 'transparent',
+                color: active === 'interests' ? '#43D9AD' : 'white',
+                borderLeft: active === 'interests' ? '3px solid #43D9AD' : 'none',
+                paddingLeft: active === 'interests' ? '17px' : '20px'
+              }}>
+                <Heart size={16} style={{ marginRight: '8px', position: 'relative', top: '3px' }} />
+                interests
+              </li>
+              <li onClick={() => setActive('education')} style={{
+                background: active === 'education' ? 'rgba(67, 217, 173, 0.1)' : 'transparent',
+                color: active === 'education' ? '#43D9AD' : 'white',
+                borderLeft: active === 'education' ? '3px solid #43D9AD' : 'none',
+                paddingLeft: active === 'education' ? '17px' : '20px'
+              }}>
+                <GraduationCap size={16} style={{ marginRight: '8px', position: 'relative', top: '3px' }} />
+                education
+              </li>
+            </ul>
+          )}
+        </div>
+
+        <div className='contact-info'>
+          <p className='about-heading sidebar-item' onClick={() => setOpenContact(!openContact)}>
+            {openContact ? <ChevronDown size={20} style={{ marginRight: '8px', position: 'relative', top: '4px' }} /> : <ChevronRight size={20} style={{ marginRight: '8px', position: 'relative', top: '4px' }} />}
+            contact-info
+          </p>
+          {openContact && (
+            <ul className='about-list dropdown-list'>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Mail size={16} color="#43D9AD" />
+                raiyash582@gmail.com
+              </li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Phone size={16} color="#43D9AD" />
+                +917015032481
+              </li>
+            </ul>
+          )}
+        </div>
+      </div>
+
+      {/* Main Content - Keep your original content */}
+      <div className='about-description'>
+        {active === 'bio' && (
+  <div style={{ animation: 'fadeIn 0.5s ease-out' }}>
+    <p className='paragraph'>/** I am Yash Rai</p>
+    <p className='paragraph'>* a Full-Stack Developer</p>
+    <p className='paragraph'>* who loves crafting smooth user experiences</p>
+    <p className='paragraph'>* and solving complex problems with clean, efficient code.</p>
+    <p className='paragraph'>* Skilled in React, Node.js, and modern web technologies.</p>
+    <p className='paragraph'>* Always learning, always building.</p>
+    <p className='paragraph'>* Currently interning at HighRadius Technologies,</p>
+    <p className='paragraph'>* where I debug and resolve real-world client implementation issues.</p>
+    <p className='paragraph'>* HighRadius automates the O2C cycle through its AI-driven products,</p>
+    <p className='paragraph'>* and my role involves providing post-implementation hypercare using SQL and problem-solving. */</p>
+  </div>
+)}
+        {active === 'interests' && (
+  <div className='paragraph' style={{ animation: 'fadeIn 0.5s ease-out' }}>
+    <p className='paragraph'>/**Outside of coding,</p>
+    <p className='paragraph'>* a few things keep me going.</p>
+    <p className='paragraph'>* I’m into anime and manga — stories that hit hard and twist your brain,</p>
+    <p className='paragraph'>* stuff like Attack on Titan or Baccano! really stick with me.</p>
+    <p className='paragraph'>* Football is another passion; it keeps me sharp and disciplined.</p>
+    <p className='paragraph'>* I love tackling tough DSA problems, like puzzles with real impact.</p>
+    <p className='paragraph'>* When I need to chill, you’ll catch me gaming or diving into novels that make me think twice. */</p>
+  </div>
+)}
+
+        {active === 'education' && (
+  <div className='paragraph' style={{ animation: 'fadeIn 0.5s ease-out' }}>
+    <p>/** I am currently pursuing a Bachelor of Engineering in Computer Science at Chandigarh University.</p>
+    <p>* In my 3rd year, I have focused on building a solid foundation in Data Structures & Algorithms while also developing full-stack web projects.</p>
+    <p>* Beyond coursework, I enhance my skills through personal projects, internships, and problem-solving challenges to stay industry-ready.</p>
+    <p>* Additionally, I have completed training in Blockchain and JavaScript via Metacrafters, earning certificates that demonstrate my proficiency in modern technologies. */</p>
+  </div>
+)}
+
+      </div>
+
+      {/* Code Snippets - Keep your original structure with slight enhancement */}
+      <div className='code-snippets'>
+        
+        {active === 'bio' && (
+          <div style={{ animation: 'fadeIn 0.5s ease-out' }}>
+            <div style={{
+              padding: '10px',
+              background: 'rgba(49, 65, 88, 0.2)',
+              borderRadius: '8px',
+              border: '1px solid #314158',
+              marginBottom: '15px'
+            }}>
+              {/* Replace with: <img src={SpringBoot} alt="" height={200} width={300} className='snippet' /> */}
+              <div style={{
+                height: '200px',
+                width: '100%',
+                background: 'linear-gradient(135deg, #6DB33F, #5A9E2E)',
+                borderRadius: '6px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'white',
+                fontSize: '1.5rem',
+                fontWeight: 'bold'
+              }}><img src={atlas} style={{width: '100%',
+                height: 'auto',
+                maxHeight: '250px',
+                objectFit: 'contain',
+                borderRadius: '8px',
+                border: '1px solid #314158',
+                background: '#1e1e1e',
+                padding: '10px'
+}}></img></div>
+            </div>
+            <p className='paragraph' style={{ lineHeight: '1.6' }}>
+              This project is my World Atlas built using React 19. It’s an interactive web app that lets users explore detailed information about countries across the globe — including flags, population, regions, and more. While building it, I focused on creating a smooth and dynamic user experience using React’s latest features like server components and optimized rendering. The project gave me a solid grasp of API integration, efficient state management, and how to present large datasets in a clean, intuitive way.
+            </p>
+          </div>
+        )}
+
+        {active === 'interests' && (
+          <div style={{ animation: 'fadeIn 0.5s ease-out' }}>
+            <div style={{
+              padding: '10px',
+              background: 'rgba(49, 65, 88, 0.2)',
+              borderRadius: '8px',
+              border: '1px solid #314158',
+              marginBottom: '15px'
+            }}>
+              {/* Replace with: <img src={bot} alt="" height={200} width={500} className='snippet' /> */}
+              <div style={{
+                height: '200px',
+                width: '100%',
+                background: 'linear-gradient(135deg, #FFB86A, #FF8C42)',
+                borderRadius: '6px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'white',
+                fontSize: '1.5rem',
+                fontWeight: 'bold'
+              }}><img src={bot} style={{width: '100%',
+                height: 'auto',
+                maxHeight: '250px',
+                objectFit: 'contain',
+                borderRadius: '8px',
+                border: '1px solid #314158',
+                background: '#1e1e1e',
+                padding: '10px'}}></img></div>
+            </div>
+            <p className='paragraph' style={{ lineHeight: '1.6' }}>
+              This project is a One Piece-themed game bot built with Node.js. Users can perform random card pulls, battle, and earn points to upgrade their collections. I implemented a leaderboard for a group of 300+ members, storing user data in a database and managing progression. Since no public JSON data was available, I also used web scraping to gather the card data, which taught me practical data handling and automation skills.
+            </p>
+          </div>
+        )}
+
+        {active === 'education' && (
+          <div style={{ animation: 'fadeIn 0.5s ease-out' }}>
+            <div style={{
+              padding: '10px',
+              background: 'rgba(49, 65, 88, 0.2)',
+              borderRadius: '8px',
+              border: '1px solid #314158',
+              marginBottom: '15px'
+            }}>
+              {/* Replace with: <img src={php} alt="" height={200} width={400} className='snippet' /> */}
+              <div style={{
+                height: '200px',
+                width: '100%',
+                background: 'linear-gradient(135deg, #4facfe, #00f2fe)',
+                borderRadius: '6px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'white',
+                fontSize: '1.5rem',
+                fontWeight: 'bold'
+              }}><img src={eduera} style={{
+                width: '100%',
+                height: 'auto',
+                maxHeight: '250px',
+                objectFit: 'contain',
+                borderRadius: '8px',
+                border: '1px solid #314158',
+                background: '#1e1e1e',
+                padding: '10px'
+              }}></img></div>
+            </div>
+            <p className='paragraph' style={{ lineHeight: '1.6' }}>
+              This project, EduEra, is an educational platform I built while learning Tailwind CSS for the first time. I applied it to design a clean and responsive interface, experimenting with modern layouts, cards, and interactive components. The project helped me understand practical UI design, responsive styling, and how to structure a site for multiple user roles effectively
+            </p>
+          </div>
+        )}
+      </div>
+
+      <style>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </div>
-  )
+  );
 }
-
-export default About
